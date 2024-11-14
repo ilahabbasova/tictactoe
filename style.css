@@ -1,0 +1,110 @@
+:root {
+    --color: #f39c12; /* Bright hover color */
+    --color-set-x: #e74c3c; /* X color */
+    --color-set-o: #8e44ad; /* O color */
+    --bg-gradient: linear-gradient(to bottom right, #1abc9c, #3498db); /* Background gradient */
+    --cell-gradient: linear-gradient(to top right, #f1c40f, #e67e22); /* Cell hover gradient */
+    --shadow-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: var(--bg-gradient); /* Gradient background */
+    font-family: 'Poppins', sans-serif; /* Creative font */
+    color: #fff;
+  }
+  
+  .board {
+    width: 320px;
+    height: 320px;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 5px;
+    box-shadow: 0 10px 20px var(--shadow-color); /* Dynamic shadow */
+    border-radius: 10px; /* Smooth corners */
+    background: #ffffff; /* Solid background for the board */
+  }
+  
+  .cell {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(to bottom, #ecf0f1, #bdc3c7); /* Subtle cell gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+    position: relative;
+    border-radius: 6px; /* Rounded edges */
+    box-shadow: 0 5px 10px var(--shadow-color); /* Cell shadow */
+    transition: transform 0.2s, background 0.3s ease; /* Smooth animations */
+  }
+  
+  .cell:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    background: var(--cell-gradient); /* Gradient effect on hover */
+  }
+  
+  .cell.x::before {
+    content: 'X';
+    color: var(--color-set-x); /* Vibrant X color */
+    font-weight: bold;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 8px var(--shadow-color); /* Glowing text */
+  }
+  
+  .cell.o::before {
+    content: 'O';
+    color: var(--color-set-o); /* Vibrant O color */
+    font-weight: bold;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 8px var(--shadow-color); /* Glowing text */
+  }
+  
+  .winning-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8); /* Dark overlay */
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 2rem;
+    font-family: 'Courier New', Courier, monospace;
+    flex-direction: column;
+    box-shadow: 0 10px 20px var(--shadow-color); /* Shadow for the message box */
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .winning-message.show {
+    display: flex;
+  }
+  
+  button {
+    border-radius: 10px;
+    font-size: 1.5rem;
+    background: linear-gradient(to right, #ff7675, #fd79a8); /* Gradient button */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #fff;
+    box-shadow: 0 5px 15px var(--shadow-color); /* Button shadow */
+    transition: background 0.3s ease, transform 0.2s;
+  }
+  
+  button:hover {
+    background: linear-gradient(to right, #fd79a8, #ff7675); /* Hover effect */
+    transform: scale(1.1); /* Slight zoom on hover */
+  }
+  
+  button:active {
+    transform: scale(0.95); /* Click effect */
+  }
